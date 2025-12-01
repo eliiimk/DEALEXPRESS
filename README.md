@@ -114,3 +114,41 @@ ADMINISTRATION
 
 ### Modifier le rôle d’un utilisateur  
 **PATCH** `/api/admin/users/:id/role`
+
+
+## Comptes de test
+
+Pour faciliter la correction, trois comptes de test sont disponibles (à créer dans la base via `/api/auth/register` puis en ajustant le champ `role` dans MongoDB) :
+
+### Utilisateur simple
+- email : `Jennie@example.com`
+- mot de passe : `azerty123`
+- rôle : `user`
+- droits : peut créer des deals, voter, commenter.
+
+### Modérateur
+- email : `eli@example.com`
+- mot de passe : `azerty123`
+- rôle : `moderator`
+- droits : modération des deals (`/api/admin/deals/...`), mais pas de gestion des rôles utilisateurs.
+
+### Administrateur
+- email : `mich@example.com`
+- mot de passe : `azerty123`
+- rôle : `admin`
+- droits : modération des deals + gestion des utilisateurs (`/api/admin/users/...`).
+
+> Ces trois comptes sont utilisés dans la collection Insomnia pour démontrer les différents niveaux de droits.
+
+---
+
+## Collection Insomnia
+
+Une collection d'API est fournie pour tester tous les scénarios :
+
+- Authentification (register, login, me)
+- Deals (CRUD)
+- Votes HOT/COLD
+- Commentaires
+- Modération (moderator/admin)
+- Administration (admin)
